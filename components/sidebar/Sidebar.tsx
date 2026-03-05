@@ -1,4 +1,4 @@
-import UserPreview from '@components/userPeview/UserPreview'
+import UserPreview from 'components/userPeview/UserPreview'
 
 const Sidebar = () => {
     const renderDevider = () => <div className="border-primary border-t-2" />

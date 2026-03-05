@@ -1,4 +1,4 @@
-import { cn } from '@shared/utils/classMerge.util'
+import { cn } from 'shared/utils/classMerge.util'
 
 interface Props {
     message: string
