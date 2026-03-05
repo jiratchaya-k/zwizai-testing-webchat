@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'Google Sans';
+    font-weight: 400;
+    src: url('/fonts/GoogleSans-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Google Sans';
+    font-weight: 500;
+    src: url('/fonts/GoogleSans-Medium.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Google Sans';
+    font-weight: 600;
+    src: url('/fonts/GoogleSans-SemiBold.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Google Sans';
+    font-weight: 700;
+    src: url('/fonts/GoogleSans-Bold.ttf') format('truetype');
+    font-display: swap;
+}
+
+@theme {
+    --color-primary: #f4633a;
+    --color-primary-01: #7128f9;
+    --color-primary-02: #ae4ba7;
+    --color-primary-03: #3262f3;
+    --color-primary-04: #7edefc;
+
+    --color-secondary: #0451ba;
+    --color-secondary-02: #103895;
+    --color-secondary-03: #3b64c4;
+    --color-secondary-04: #7493dd;
+
+    --color-neutral-00: #000000;
+    --color-neutral-10: #1d1b20;
+    --color-neutral-20: #322f35;
+    --color-neutral-30: #48464c;
+    --color-neutral-40: #605d64;
+    --color-neutral-50: #79767d;
+    --color-neutral-70: #aea9b1;
+    --color-neutral-90: #e6e0e9;
+    --color-neutral-100: #ffffff;
+
+    --color-system-green-500: #22c55e;
+    --color-system-green-600: #16a34a;
+
+    --color-system-amber-400: #fbbf24;
+    --color-system-amber-500: #f59e0b;
+
+    --color-system-red-500: #ef4444;
+    --color-system-red-600: #dc2626;
+
+    --color-system-blue-500: #3b82f6;
+    --color-system-blue-600: #2563eb;
+
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-2xl: 1600px;
+}
+
+html,
+body {
+    background: #f0eee9;
+    color: var(--foreground);
+    font-family: 'Google Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
