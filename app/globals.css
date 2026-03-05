@@ -26,16 +26,11 @@
 }
 
 @theme {
-    --color-primary: #f4633a;
-    --color-primary-01: #7128f9;
-    --color-primary-02: #ae4ba7;
-    --color-primary-03: #3262f3;
-    --color-primary-04: #7edefc;
+    --color-primary: #fa5c5c;
 
-    --color-secondary: #0451ba;
-    --color-secondary-02: #103895;
-    --color-secondary-03: #3b64c4;
-    --color-secondary-04: #7493dd;
+    --color-secondary: #fd8a6b;
+
+    --color-yellow: #fbef76;
 
     --color-neutral-00: #000000;
     --color-neutral-10: #1d1b20;
