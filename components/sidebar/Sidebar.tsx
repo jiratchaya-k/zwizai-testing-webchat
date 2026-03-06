@@ -6,6 +6,8 @@ import UserPreview from 'components/userPeview/UserPreview'
 
 import { chatStore, IChat } from '@stores/chat.store'
 
+import * as styles from './Sidebar.style'
+
 const Sidebar = () => {
     const { activeChat, setActiveChat } = chatStore((state) => state)
 
@@ -19,10 +21,11 @@ const Sidebar = () => {
         refetchInterval: 1000,
     })
 
-    const renderDevider = () => <div className="border-primary border-t-2" />
+    const renderDevider = () => <div className={styles.devider} />
+
     return (
-        <div className="border-primary flex h-full w-full flex-col overflow-y-scroll border-r-2 py-4 text-white">
-            <h2 className="text-md text-primary mb-2 px-4 font-bold">Chat</h2>
+        <div className={styles.container}>
+            <h2 className={styles.title}>Chat</h2>
             {renderDevider()}
             {data?.length > 0 ? (
                 data.map((chat: IChat) => (
@@ -40,9 +43,7 @@ const Sidebar = () => {
                     </Fragment>
                 ))
             ) : (
-                <div className="mt-4 text-center text-gray-500">
-                    Waiting for chats...
-                </div>
+                <div className={styles.emtyState}>Waiting for chats...</div>
             )}
         </div>
     )

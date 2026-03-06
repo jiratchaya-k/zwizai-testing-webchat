@@ -1,5 +1,7 @@
 import { cn } from 'shared/utils/classMerge.util'
 
+import * as styles from './UserPreview.style'
+
 interface Props {
     username: string
     message: string
@@ -10,20 +12,20 @@ const UserPreview = ({ active, username, message, onClick }: Props) => {
     return (
         <button
             className={cn(
-                'cursor-pointer px-4 py-2 text-left text-sm font-medium',
+                styles.container,
                 active ? 'bg-secondary' : 'bg-transparent',
             )}
             onClick={onClick}
         >
             <span
                 className={cn(
-                    'font-bold',
+                    styles.username,
                     active ? 'text-white' : 'text-black',
                 )}
             >
                 {username}
             </span>
-            <p className="text-neutral-50">{message}</p>
+            <p className={styles.message}>{message}</p>
         </button>
     )
 }

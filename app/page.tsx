@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import Chat from '@components/chat/Chat'
-import Header from '@components/layout/Header'
+import Header from '@components/header/Header'
 import Sidebar from '@components/sidebar/Sidebar'
 
 const HomePage: FC = () => {
