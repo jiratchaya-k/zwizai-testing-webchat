@@ -4,14 +4,16 @@ interface Props {
     username: string
     message: string
     active?: boolean
+    onClick: () => void
 }
-const UserPreview = ({ active, username, message }: Props) => {
+const UserPreview = ({ active, username, message, onClick }: Props) => {
     return (
         <button
             className={cn(
                 'cursor-pointer px-4 py-2 text-left text-sm font-medium',
                 active ? 'bg-secondary' : 'bg-transparent',
             )}
+            onClick={onClick}
         >
             <span
                 className={cn(

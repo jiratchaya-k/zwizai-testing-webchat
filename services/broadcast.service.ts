@@ -9,7 +9,7 @@ const BoardcastService = {
                 type: 'text',
                 text: textMessage,
             }
-            console.log('Sending broadcast message:', message)
+
             await sendBroadcast([message])
         } catch (error) {
             console.error('Error sending broadcast message:', error)

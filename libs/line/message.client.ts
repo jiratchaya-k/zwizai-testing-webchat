@@ -19,7 +19,8 @@ export const pushMessage = async (to: string, messages: TextMessage[]) => {
         if (!response.ok) {
             throw new Error(JSON.stringify(data))
         }
-        console.log('Push message response:', data)
+
+        return data
     } catch (error) {
         console.error('Error sending push message:', error)
     }

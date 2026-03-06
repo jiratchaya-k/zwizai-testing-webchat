@@ -3,30 +3,37 @@ import { useState } from 'react'
 
 import { useMutation, useQuery } from '@tanstack/react-query'
 
+import { chatStore, IChat } from '@stores/chat.store'
+
 import Bubble from './bubble/Bubble'
 
 const Chat = () => {
     const [messageToSend, setMessageToSend] = useState('')
 
-    const { data } = useQuery({
-        queryKey: ['chatList'],
+    const { activeChat } = chatStore((state) => state)
+
+    const { data } = useQuery<IChat[]>({
+        queryKey: ['chatHistory', activeChat?.sender.uid],
         queryFn: async () => {
-            const res = await fetch('/api/line/history')
+            const res = await fetch(
+                `/api/line/history/${activeChat?.sender.uid}`,
+            )
             const data = await res.json()
             return data.chatList
         },
         refetchInterval: 1000,
+        enabled: !!activeChat?.sender.uid,
     })
 
-    const activeChat = data?.[0] || null
+    const chatHistory = data?.[0] || null
 
     const { mutate } = useMutation({
-        mutationKey: ['pushMessage', activeChat?.sender.uid, messageToSend],
+        mutationKey: ['pushMessage', chatHistory?.sender.uid, messageToSend],
         mutationFn: async (message: string) => {
             const res = await fetch('/api/line/push-message', {
                 method: 'POST',
                 body: JSON.stringify({
-                    userId: activeChat?.sender.uid,
+                    userId: chatHistory?.sender.uid,
                     message,
                 }),
             })
@@ -36,9 +43,7 @@ const Chat = () => {
     })
 
     const handleSendMessage = async () => {
-        // Implement the logic to send the message here
         mutate(messageToSend)
-        // Clear the input after sending
         setMessageToSend('')
     }
 
@@ -46,12 +51,12 @@ const Chat = () => {
         <div className="grid w-full grid-rows-[1fr_200px]">
             <div className="grid grid-rows-[50px_1fr]">
                 <div className="bg-secondary border-primary flex items-center border-b-2 px-4 font-bold text-white">
-                    {activeChat
-                        ? activeChat.sender.displayName
+                    {chatHistory
+                        ? chatHistory.sender.displayName
                         : 'Select a chat'}
                 </div>
                 <div className="flex h-full w-full flex-col items-start gap-4 overflow-y-scroll p-4">
-                    {activeChat?.messageList.map((message, index) => {
+                    {chatHistory?.messageList.map((message, index) => {
                         return (
                             <Bubble
                                 key={index}

@@ -19,7 +19,7 @@ const sendBroadcast = async (messages: TextMessage[]) => {
         if (!response.ok) {
             throw new Error(JSON.stringify(data))
         }
-        console.log('Broadcast response:', data)
+        return data
     } catch (error) {
         console.error('Error sending broadcast message:', error)
         throw error
