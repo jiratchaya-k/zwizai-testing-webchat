@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 export const container = clsx(
-    'bg-foreground grid h-full w-full grid-rows-[50px_calc(100dvh-342px)_200px] overflow-hidden rounded-2xl shadow-lg',
+    'bg-foreground grid h-full w-full grid-rows-[50px_calc(100dvh-322px)_180px] overflow-hidden rounded-2xl shadow-lg',
 )
 
 export const chatHeader = clsx(
@@ -9,7 +9,7 @@ export const chatHeader = clsx(
 )
 
 export const chatBox = clsx(
-    'flex h-full w-full flex-col items-start gap-4 overflow-y-scroll p-4',
+    'flex h-full w-full flex-col items-start gap-1 overflow-y-scroll p-4',
 )
 
 export const chatInput = clsx(

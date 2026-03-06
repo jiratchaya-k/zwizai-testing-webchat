@@ -26,7 +26,7 @@ const Chat = () => {
             const data = await res.json()
             return data.chatList
         },
-        // refetchInterval: 1000,
+        refetchInterval: 1000,
         enabled: !!activeChat?.sender.uid,
     })
 
@@ -64,7 +64,6 @@ const Chat = () => {
             <div
                 className={cn(
                     styles.container,
-                    chatHistory,
                     !chatHistory && 'flex items-center justify-center',
                 )}
             >

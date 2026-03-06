@@ -7,4 +7,6 @@ export const container = clsx(
 
 export const username = clsx('font-bold')
 
-export const message = clsx('text-xs font-normal text-neutral-50')
+export const message = clsx(
+    'overflow-hidden text-xs font-normal text-ellipsis whitespace-nowrap text-neutral-50',
+)

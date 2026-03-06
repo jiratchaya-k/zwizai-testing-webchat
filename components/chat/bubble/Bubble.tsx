@@ -19,7 +19,7 @@ const Bubble = ({ message, time, type }: Props) => {
                 className={cn(
                     styles.message,
                     type === 'sent' && 'bg-primary',
-                    type === 'received' && 'bg-secondary',
+                    type === 'received' && 'bg-white text-neutral-600',
                 )}
             >
                 {message}
