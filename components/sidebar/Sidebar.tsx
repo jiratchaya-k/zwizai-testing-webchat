@@ -42,6 +42,7 @@ const Sidebar = () => {
                             <UserPreview
                                 username={chat.sender.displayName}
                                 message={chat.messageList.at(-1)?.text}
+                                profileImage={chat.sender.profileImageUrl}
                                 active={
                                     chat.sender.uid === activeChat?.sender.uid
                                 }

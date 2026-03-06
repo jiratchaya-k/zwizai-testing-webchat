@@ -29,6 +29,7 @@ const WebhookService = {
                     const sender: IUser = {
                         uid: userId,
                         displayName: userProfile.displayName,
+                        profileImageUrl: userProfile.pictureUrl,
                     }
 
                     const messageList: IMessage[] = [

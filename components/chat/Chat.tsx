@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import { HiChatBubbleLeftRight } from 'react-icons/hi2'
 
+import Image from 'next/image'
+
 import { useMutation, useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 
@@ -71,6 +73,13 @@ const Chat = () => {
                 {chatHistory ? (
                     <>
                         <div className={styles.chatHeader}>
+                            <Image
+                                src={chatHistory?.sender.profileImageUrl}
+                                alt="profile image"
+                                width={40}
+                                height={40}
+                                className={styles.profileImage}
+                            />
                             {chatHistory?.sender.displayName}
                         </div>
                         <div className={styles.chatBox}>

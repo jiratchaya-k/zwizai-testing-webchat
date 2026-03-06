@@ -1,12 +1,14 @@
 import clsx from 'clsx'
 
 export const container = clsx(
-    'bg-foreground grid h-full w-full grid-rows-[50px_calc(100dvh-322px)_180px] overflow-hidden rounded-2xl shadow-lg',
+    'bg-foreground grid h-full w-full grid-rows-[60px_calc(100dvh-344px)_180px] overflow-hidden rounded-2xl shadow-lg',
 )
 
 export const chatHeader = clsx(
-    'text-secondary flex items-center border-b border-neutral-300 px-4 font-bold',
+    'text-secondary flex items-center gap-2 border-b border-neutral-300 px-4 font-bold',
 )
+
+export const profileImage = clsx('h-10 w-10 rounded-full')
 
 export const chatBox = clsx(
     'flex h-full w-full flex-col items-start gap-1 overflow-y-scroll p-4',

@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 import { useQuery } from '@tanstack/react-query'
 
 import { lineStore } from '@stores/line.store'
@@ -30,10 +32,12 @@ const Header = () => {
             <div className={styles.lineInfoContainer}>
                 {linInfo && (
                     <>
-                        <img
+                        <Image
                             src={linInfo.profileImageUrl}
                             alt="Profile"
                             className={styles.profileImage}
+                            width={24}
+                            height={24}
                         />
                         <span className={styles.displayName}>
                             {linInfo.displayName}{' '}

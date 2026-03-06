@@ -1,6 +1,7 @@
 export interface IUser {
     uid: string
     displayName: string
+    profileImageUrl: string
 }
 
 export interface IMessage {
