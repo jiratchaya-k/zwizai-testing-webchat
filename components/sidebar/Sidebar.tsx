@@ -24,19 +24,26 @@ const Sidebar = () => {
         <div className="border-primary flex h-full w-full flex-col overflow-y-scroll border-r-2 py-4 text-white">
             <h2 className="text-md text-primary mb-2 px-4 font-bold">Chat</h2>
             {renderDevider()}
-            {data?.map((chat: IChat) => (
-                <Fragment key={chat.sender.uid}>
-                    <UserPreview
-                        username={chat.sender.displayName}
-                        message={
-                            chat.messageList[chat.messageList.length - 1]?.text
-                        }
-                        active={chat.sender.uid === activeChat?.sender.uid}
-                        onClick={() => setActiveChat(chat)}
-                    />
-                    {renderDevider()}
-                </Fragment>
-            ))}
+            {data?.length > 0 ? (
+                data.map((chat: IChat) => (
+                    <Fragment key={chat.sender.uid}>
+                        <UserPreview
+                            username={chat.sender.displayName}
+                            message={
+                                chat.messageList[chat.messageList.length - 1]
+                                    ?.text
+                            }
+                            active={chat.sender.uid === activeChat?.sender.uid}
+                            onClick={() => setActiveChat(chat)}
+                        />
+                        {renderDevider()}
+                    </Fragment>
+                ))
+            ) : (
+                <div className="mt-4 text-center text-gray-500">
+                    Waiting for chats...
+                </div>
+            )}
         </div>
     )
 }

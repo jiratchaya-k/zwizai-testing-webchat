@@ -8,11 +8,14 @@ interface Props {
 const Bubble = ({ message, time, type }: Props) => {
     return (
         <div
-            className={cn('flex flex-col gap-1', type === 'sent' && 'self-end')}
+            className={cn(
+                'flex flex-col gap-1',
+                type === 'sent' && 'items-end self-end',
+            )}
         >
             <div
                 className={cn(
-                    'rounded-2xl p-4 text-white',
+                    'w-fit rounded-2xl p-4 text-white',
                     type === 'sent' && 'bg-primary',
                     type === 'received' && 'bg-secondary',
                 )}
