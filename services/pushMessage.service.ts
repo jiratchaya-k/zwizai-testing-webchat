@@ -1,8 +1,10 @@
 import { TextMessage } from '@line/bot-sdk'
 
-import { chatStore, IChat } from '@stores/chat.store'
+import { chatStore } from '@stores/chat.store'
 
 import { pushMessage } from '@libs/line/message.client'
+
+import { IChat } from '@shared/interfaces/chat.interface'
 
 const PushMessageService = {
     async pushMessage(userId: string, textMessage: string) {

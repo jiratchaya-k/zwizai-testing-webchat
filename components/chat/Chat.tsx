@@ -5,8 +5,9 @@ import { HiChatBubbleLeftRight } from 'react-icons/hi2'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 
-import { chatStore, IChat } from '@stores/chat.store'
+import { chatStore } from '@stores/chat.store'
 
+import { IChat } from '@shared/interfaces/chat.interface'
 import { cn } from '@shared/utils/classMerge.util'
 
 import Bubble from './bubble/Bubble'

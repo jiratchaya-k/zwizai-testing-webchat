@@ -1,6 +1,8 @@
-import { chatStore, IChat, IMessage, IUser } from 'stores/chat.store'
+import { chatStore } from 'stores/chat.store'
 
 import { getUserProfile } from '@libs/line/user.client'
+
+import { IChat, IMessage, IUser } from '@shared/interfaces/chat.interface'
 
 const WebhookService = {
     async receiveMessageEvent(events: MessageEvent[]) {

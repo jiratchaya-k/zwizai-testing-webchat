@@ -1,20 +1,6 @@
 import { create } from 'zustand'
 
-export interface IUser {
-    uid: string
-    displayName: string
-}
-
-export interface IMessage {
-    text: string
-    timestamp: number
-    type: 'sent' | 'received'
-}
-
-export interface IChat {
-    sender: IUser
-    messageList: IMessage[]
-}
+import { IChat } from '@shared/interfaces/chat.interface'
 
 interface ChatState {
     chatList: IChat[]
