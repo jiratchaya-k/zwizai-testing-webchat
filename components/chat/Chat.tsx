@@ -1,10 +1,13 @@
 'use client'
 import { useState } from 'react'
+import { HiChatBubbleLeftRight } from 'react-icons/hi2'
 
 import { useMutation, useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 
 import { chatStore, IChat } from '@stores/chat.store'
+
+import { cn } from '@shared/utils/classMerge.util'
 
 import Bubble from './bubble/Bubble'
 import * as styles from './Chat.style'
@@ -23,7 +26,7 @@ const Chat = () => {
             const data = await res.json()
             return data.chatList
         },
-        refetchInterval: 1000,
+        // refetchInterval: 1000,
         enabled: !!activeChat?.sender.uid,
     })
 
@@ -49,41 +52,66 @@ const Chat = () => {
         setMessageToSend('')
     }
 
+    const renderEmptyState = () => (
+        <div className={styles.emptyState}>
+            <HiChatBubbleLeftRight className={styles.emptyStateIcon} />
+            Select a chat to start messaging
+        </div>
+    )
+
     return (
-        <div className={styles.container}>
-            <div className={styles.chatHeader}>
-                {chatHistory ? chatHistory.sender.displayName : 'Select a chat'}
+        <div className="p-4">
+            <div
+                className={cn(
+                    styles.container,
+                    chatHistory,
+                    !chatHistory && 'flex items-center justify-center',
+                )}
+            >
+                {chatHistory ? (
+                    <>
+                        <div className={styles.chatHeader}>
+                            {chatHistory?.sender.displayName}
+                        </div>
+                        <div className={styles.chatBox}>
+                            {chatHistory?.messageList.map((message, index) => {
+                                return (
+                                    <Bubble
+                                        key={index}
+                                        message={message.text}
+                                        time={dayjs(message.timestamp).format(
+                                            'HH:mm',
+                                        )}
+                                        type={message.type}
+                                    />
+                                )
+                            })}
+                        </div>
+                        {activeChat && (
+                            <div className={styles.chatInput}>
+                                <textarea
+                                    className={styles.textarea}
+                                    placeholder="Write Message..."
+                                    wrap="soft"
+                                    rows={2}
+                                    value={messageToSend}
+                                    onChange={(e) =>
+                                        setMessageToSend(e.target.value)
+                                    }
+                                />
+                                <button
+                                    className={styles.sendButton}
+                                    onClick={handleSendMessage}
+                                >
+                                    Send
+                                </button>
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    renderEmptyState()
+                )}
             </div>
-            <div className={styles.chatBox}>
-                {chatHistory?.messageList.map((message, index) => {
-                    return (
-                        <Bubble
-                            key={index}
-                            message={message.text}
-                            time={dayjs(message.timestamp).format('HH:mm')}
-                            type={message.type}
-                        />
-                    )
-                })}
-            </div>
-            {activeChat && (
-                <div className={styles.chatInput}>
-                    <textarea
-                        className={styles.textarea}
-                        placeholder="Write Message..."
-                        wrap="soft"
-                        rows={3}
-                        value={messageToSend}
-                        onChange={(e) => setMessageToSend(e.target.value)}
-                    />
-                    <button
-                        className={styles.sendButton}
-                        onClick={handleSendMessage}
-                    >
-                        Send
-                    </button>
-                </div>
-            )}
         </div>
     )
 }

@@ -1,4 +1,5 @@
 'use client'
+import { BsChatDotsFill } from 'react-icons/bs'
 import { Fragment } from 'react/jsx-runtime'
 
 import { useQuery } from '@tanstack/react-query'
@@ -51,7 +52,12 @@ const Sidebar = () => {
                         </Fragment>
                     ))
                 ) : (
-                    <div className={styles.emtyState}>Waiting for chats...</div>
+                    <div className={styles.emptyState}>
+                        <BsChatDotsFill className={styles.emptyStateIcon} />
+                        Start a conversation
+                        <br />
+                        by sending a message to LINE OA!
+                    </div>
                 )}
             </div>
         </div>
