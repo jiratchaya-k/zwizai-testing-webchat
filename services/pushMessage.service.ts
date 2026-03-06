@@ -1,6 +1,7 @@
 import { TextMessage } from '@line/bot-sdk'
 
 import { chatStore } from '@stores/chat.store'
+import { lineStore } from '@stores/line.store'
 
 import { pushMessage } from '@libs/line/message.client'
 
@@ -14,6 +15,7 @@ const PushMessageService = {
                 text: textMessage,
             }
 
+            const lineInfo = lineStore.getState().lineInfo
             const chatHistory = chatStore.getState().chatList || []
             const existingChat = chatHistory.find(
                 (chat) => chat.sender.uid === userId,
@@ -32,7 +34,8 @@ const PushMessageService = {
                 const newChat: IChat = {
                     sender: {
                         uid: userId,
-                        displayName: 'LINE OA',
+                        displayName: lineInfo?.displayName,
+                        profileImageUrl: lineInfo?.profileImageUrl,
                     },
                     messageList: [
                         {

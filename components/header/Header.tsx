@@ -11,7 +11,7 @@ import { ILineInfo } from '@shared/interfaces/line.interface'
 import * as styles from './Header.style'
 
 const Header = () => {
-    const { linInfo, setLineInfo } = lineStore((state) => state)
+    const { lineInfo, setLineInfo } = lineStore((state) => state)
 
     useQuery<ILineInfo>({
         queryKey: ['lineInfo'],
@@ -23,26 +23,26 @@ const Header = () => {
             setLineInfo(data)
             return data
         },
-        enabled: !linInfo,
+        enabled: !lineInfo,
     })
-    console.log('linInfo', linInfo)
+    console.log('lineInfo', lineInfo)
 
     return (
         <div className={styles.container}>
             <div className={styles.lineInfoContainer}>
-                {linInfo && (
+                {lineInfo && (
                     <>
                         <Image
-                            src={linInfo.profileImageUrl}
+                            src={lineInfo.profileImageUrl}
                             alt="Profile"
                             className={styles.profileImage}
                             width={24}
                             height={24}
                         />
                         <span className={styles.displayName}>
-                            {linInfo.displayName}{' '}
+                            {lineInfo.displayName}{' '}
                             <span className="text-neutral-400">
-                                ({linInfo.basicId})
+                                ({lineInfo.basicId})
                             </span>
                         </span>
                     </>
