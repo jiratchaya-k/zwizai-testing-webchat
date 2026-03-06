@@ -30,6 +30,8 @@
 
     --color-secondary: #fd8a6b;
 
+    --color-foreground: #f0eee9;
+
     --color-neutral-00: #000000;
     --color-neutral-10: #1d1b20;
     --color-neutral-20: #322f35;
@@ -61,11 +63,10 @@
 
 html,
 body {
-    background: #f0eee9;
-    color: var(--foreground);
     font-family: 'Google Sans', sans-serif;
     padding: 0;
     margin: 0;
+    background: var(--color-background);
 }
 
 a {

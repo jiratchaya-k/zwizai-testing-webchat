@@ -21,30 +21,39 @@ const Sidebar = () => {
         refetchInterval: 1000,
     })
 
-    const renderDevider = () => <div className={styles.devider} />
-
     return (
-        <div className={styles.container}>
-            <h2 className={styles.title}>Chat</h2>
-            {renderDevider()}
-            {data?.length > 0 ? (
-                data.map((chat: IChat) => (
-                    <Fragment key={chat.sender.uid}>
-                        <UserPreview
-                            username={chat.sender.displayName}
-                            message={
-                                chat.messageList[chat.messageList.length - 1]
-                                    ?.text
-                            }
-                            active={chat.sender.uid === activeChat?.sender.uid}
-                            onClick={() => setActiveChat(chat)}
-                        />
-                        {renderDevider()}
-                    </Fragment>
-                ))
-            ) : (
-                <div className={styles.emtyState}>Waiting for chats...</div>
-            )}
+        <div className="p-4">
+            <div className={styles.container}>
+                <h2 className={styles.title}>
+                    Chats{' '}
+                    <span className={styles.totalChats}>
+                        ({data?.length || 0})
+                    </span>
+                </h2>
+
+                <div className={styles.devider} />
+
+                {data?.length > 0 ? (
+                    data.map((chat: IChat) => (
+                        <Fragment key={chat.sender.uid}>
+                            <UserPreview
+                                username={chat.sender.displayName}
+                                message={
+                                    chat.messageList[
+                                        chat.messageList.length - 1
+                                    ]?.text
+                                }
+                                active={
+                                    chat.sender.uid === activeChat?.sender.uid
+                                }
+                                onClick={() => setActiveChat(chat)}
+                            />
+                        </Fragment>
+                    ))
+                ) : (
+                    <div className={styles.emtyState}>Waiting for chats...</div>
+                )}
+            </div>
         </div>
     )
 }

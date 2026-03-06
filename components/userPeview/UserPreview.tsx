@@ -13,19 +13,21 @@ const UserPreview = ({ active, username, message, onClick }: Props) => {
         <button
             className={cn(
                 styles.container,
-                active ? 'bg-secondary' : 'bg-transparent',
+                active ? 'bg-secondary hover:bg-secondary' : 'bg-transparent',
             )}
             onClick={onClick}
         >
             <span
                 className={cn(
                     styles.username,
-                    active ? 'text-white' : 'text-black',
+                    active ? 'text-White' : 'text-black',
                 )}
             >
                 {username}
             </span>
-            <p className={styles.message}>{message}</p>
+            <p className={cn(styles.message, active && 'text-foreground')}>
+                {message}
+            </p>
         </button>
     )
 }
