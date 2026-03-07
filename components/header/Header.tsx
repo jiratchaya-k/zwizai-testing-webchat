@@ -2,28 +2,12 @@
 
 import Image from 'next/image'
 
-import { useQuery } from '@tanstack/react-query'
-
 import { lineStore } from '@stores/line.store'
-
-import { ILineInfo } from '@shared/interfaces/line.interface'
 
 import * as styles from './Header.style'
 
 const Header = () => {
-    const { lineInfo, setLineInfo } = lineStore((state) => state)
-
-    useQuery<ILineInfo>({
-        queryKey: ['lineInfo'],
-        queryFn: async () => {
-            const response = await fetch('/api/line/info')
-            const data = await response.json()
-
-            setLineInfo(data)
-            return data
-        },
-        enabled: !lineInfo,
-    })
+    const { lineInfo } = lineStore((state) => state)
 
     return (
         <div className={styles.container}>
