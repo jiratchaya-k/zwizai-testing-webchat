@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { HiChatBubbleLeftRight } from 'react-icons/hi2'
 
 import Image from 'next/image'
@@ -15,7 +15,7 @@ import { cn } from '@shared/utils/classMerge.util'
 import Bubble from './bubble/Bubble'
 import * as styles from './Chat.style'
 
-const Chat = () => {
+const Chat: FC = () => {
     const [messageToSend, setMessageToSend] = useState('')
 
     const { activeChat } = chatStore((state) => state)

@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 import Image from 'next/image'
 
 import { cn } from 'shared/utils/classMerge.util'
@@ -11,7 +13,7 @@ interface Props {
     active?: boolean
     onClick: () => void
 }
-const UserPreview = ({
+const UserPreview: FC<Props> = ({
     active,
     username,
     message,

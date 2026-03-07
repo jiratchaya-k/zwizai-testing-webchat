@@ -1,12 +1,14 @@
 'use client'
 
+import { FC } from 'react'
+
 import Image from 'next/image'
 
 import { lineStore } from '@stores/line.store'
 
 import * as styles from './Header.style'
 
-const Header = () => {
+const Header: FC = () => {
     const { lineInfo } = lineStore((state) => state)
 
     return (

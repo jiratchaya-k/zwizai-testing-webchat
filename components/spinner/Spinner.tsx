@@ -1,9 +1,11 @@
+import { FC } from 'react'
+
 interface Props {
     size?: number
     color?: string
 }
 
-const Spinner = ({ size = 24, color = '#000000' }: Props) => {
+const Spinner: FC = ({ size = 24, color = '#000000' }: Props) => {
     return (
         <svg
             className="stroke-primary animate-spin"

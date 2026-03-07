@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 import { cn } from 'shared/utils/classMerge.util'
 
 import * as styles from './Bubble.style'
@@ -7,7 +9,7 @@ interface Props {
     time: string
     type: 'sent' | 'received'
 }
-const Bubble = ({ message, time, type }: Props) => {
+const Bubble: FC<Props> = ({ message, time, type }: Props) => {
     return (
         <div
             className={cn(

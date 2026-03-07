@@ -1,4 +1,5 @@
 'use client'
+import { FC } from 'react'
 import { BsChatDotsFill } from 'react-icons/bs'
 import { Fragment } from 'react/jsx-runtime'
 
@@ -11,7 +12,7 @@ import { IChat } from '@shared/interfaces/chat.interface'
 
 import * as styles from './Sidebar.style'
 
-const Sidebar = () => {
+const Sidebar: FC = () => {
     const { activeChat, setActiveChat } = chatStore((state) => state)
 
     const { data } = useQuery<IChat[]>({
