@@ -29,7 +29,7 @@ const Chat: FC = () => {
             const data = await res.json()
             return data
         },
-        refetchInterval: 3000,
+        refetchInterval: 1000,
         enabled: !!activeChat?.sender.uid,
     })
 
