@@ -22,7 +22,7 @@ const Sidebar: FC = () => {
             const data = await res.json()
             return data
         },
-        refetchInterval: 1000,
+        refetchInterval: 3000,
     })
 
     return (
