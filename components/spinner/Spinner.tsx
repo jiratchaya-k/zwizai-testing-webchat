@@ -5,7 +5,7 @@ interface Props {
     color?: string
 }
 
-const Spinner: FC = ({ size = 24, color = '#000000' }: Props) => {
+const Spinner: FC<Props> = ({ size = 24, color = '#000000' }: Props) => {
     return (
         <svg
             className="stroke-primary animate-spin"
