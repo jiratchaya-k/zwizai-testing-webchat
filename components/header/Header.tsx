@@ -18,14 +18,12 @@ const Header = () => {
         queryFn: async () => {
             const response = await fetch('/api/line/info')
             const data = await response.json()
-            console.log('data', data)
 
             setLineInfo(data)
             return data
         },
         enabled: !lineInfo,
     })
-    console.log('lineInfo', lineInfo)
 
     return (
         <div className={styles.container}>

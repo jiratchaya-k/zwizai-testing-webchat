@@ -19,7 +19,8 @@
             "@shared/*": ["shared/*"],
             "@services/*": ["services/*"],
             "@libs/*": ["libs/*"],
-            "@stores/*": ["stores/*"]
+            "@stores/*": ["stores/*"],
+            "@server/*": ["server/*"]
         },
         "plugins": [
             {

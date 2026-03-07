@@ -1,11 +1,10 @@
 import { NextResponse } from 'next/server'
 
-import { chatStore } from 'stores/chat.store'
+import { chatHistory } from '@server/chatHistory.server'
 
 export async function GET() {
     try {
-        const chatList = chatStore.getState().chatList || []
-        return NextResponse.json({ chatList })
+        return NextResponse.json(chatHistory)
     } catch (error) {
         return NextResponse.json(
             { error: 'Internal Server Error' },

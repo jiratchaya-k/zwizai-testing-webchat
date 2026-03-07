@@ -15,11 +15,11 @@ const Sidebar = () => {
     const { activeChat, setActiveChat } = chatStore((state) => state)
 
     const { data } = useQuery<IChat[]>({
-        queryKey: ['chatList'],
+        queryKey: ['chatHistory'],
         queryFn: async () => {
             const res = await fetch('/api/line/history')
             const data = await res.json()
-            return data.chatList
+            return data
         },
         refetchInterval: 1000,
     })

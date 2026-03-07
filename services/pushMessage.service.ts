@@ -1,11 +1,12 @@
 import { TextMessage } from '@line/bot-sdk'
 
-import { chatStore } from '@stores/chat.store'
 import { lineStore } from '@stores/line.store'
 
 import { pushMessage } from '@libs/line/message.client'
 
 import { IChat } from '@shared/interfaces/chat.interface'
+
+import { chatHistory } from '@server/chatHistory.server'
 
 const PushMessageService = {
     async pushMessage(userId: string, textMessage: string) {
@@ -16,7 +17,7 @@ const PushMessageService = {
             }
 
             const lineInfo = lineStore.getState().lineInfo
-            const chatHistory = chatStore.getState().chatList || []
+
             const existingChat = chatHistory.find(
                 (chat) => chat.sender.uid === userId,
             )
@@ -26,9 +27,6 @@ const PushMessageService = {
                     text: textMessage,
                     timestamp: Date.now(),
                     type: 'sent',
-                })
-                chatStore.setState({
-                    chatList: [...chatHistory],
                 })
             } else {
                 const newChat: IChat = {
@@ -45,9 +43,7 @@ const PushMessageService = {
                         },
                     ],
                 }
-                chatStore.setState({
-                    chatList: [...chatHistory, newChat],
-                })
+                chatHistory.push(newChat)
             }
 
             await pushMessage(userId, [message])

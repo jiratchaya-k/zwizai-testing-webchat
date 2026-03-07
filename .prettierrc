@@ -27,6 +27,7 @@
         "^@utils/(.*)$",
         "^@types/(.*)$",
         "^@shared/(.*)$",
+        "^@server/(.*)$",
         "^[./]"
     ],
     "importOrderSeparation": true,

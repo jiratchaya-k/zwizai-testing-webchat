@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import { chatStore } from 'stores/chat.store'
+import { chatHistory } from '@server/chatHistory.server'
 
 export async function GET(
     _request: NextRequest,
@@ -9,16 +9,15 @@ export async function GET(
     try {
         const { userId } = await params
 
-        const chatList = chatStore.getState().chatList || []
-        const chatByUserId = chatList.filter(
+        const chatByUserId = chatHistory.filter(
             (chat) => chat.sender.uid === userId,
         )
 
         if (chatByUserId.length === 0) {
-            return NextResponse.json({ chatList: [] })
+            return NextResponse.json([])
         }
 
-        return NextResponse.json({ chatList: chatByUserId })
+        return NextResponse.json(chatByUserId)
     } catch (error) {
         return NextResponse.json(
             { error: 'Internal Server Error' },

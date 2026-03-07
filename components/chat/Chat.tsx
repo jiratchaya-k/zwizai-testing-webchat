@@ -27,7 +27,7 @@ const Chat = () => {
                 `/api/line/history/${activeChat?.sender.uid}`,
             )
             const data = await res.json()
-            return data.chatList
+            return data
         },
         refetchInterval: 1000,
         enabled: !!activeChat?.sender.uid,
