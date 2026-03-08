@@ -1,8 +1,7 @@
 import { IChat } from '@shared/interfaces/chat.interface'
 
-const globalForChat = globalThis as unknown as {
-    chatHistory?: IChat[]
+declare global {
+    var chatHistory: IChat[]
 }
-
 export const chatHistory =
-    globalForChat.chatHistory ?? (globalForChat.chatHistory = [])
+    globalThis.chatHistory ?? (globalThis.chatHistory = [])
