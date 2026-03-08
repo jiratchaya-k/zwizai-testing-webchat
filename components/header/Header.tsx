@@ -33,7 +33,7 @@ const Header: FC = () => {
                 )}
             </div>
             <div>
-                <span className={styles.title}>SWIZ.AI Testing Webchat</span> By
+                <span className={styles.title}>ZWIZ.AI Testing Webchat</span> By
                 Jiratchaya Kongmuang
             </div>
         </div>

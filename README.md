@@ -1,4 +1,4 @@
-# SWIZ.AI Testing Webchat
+# ZWIZ.AI Testing Webchat
 
 A lightweight web chat application built with Next.js and TypeScript that integrates with the LINE Messaging API to display conversations from a LINE Official Account (LINE OA) through a web-based interface. Developed as part of a testing submission for ZWIZ.AI.
 
